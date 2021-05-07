@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Social Network Analysis - Concepts and Applications</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" integrity="sha512-nNlU0WK2QfKsuEmdcTwkeh+lhGs6uyOxuUs+n+0oXSYDok5qy0EI0lt01ZynHq6+p/tbgpZ7P+yUb+r71wqdXg==" crossorigin="anonymous" />
+      
+        <style>
+
+            * {
+                scroll-behavior: smooth;
+            }
+
+            .underline--magical {
+                background-image: linear-gradient(120deg, #e28d8dff 0%, #e8b3b3ff 100%);
+                background-repeat: no-repeat;
+                background-size: 100% 0.2em;
+                background-position: 0 88%;
+                color: #4f4f4fff !important;
+                font-size: 40px;
+            }
+
+            .section {
+                padding-top: 40px;
+            }
+
+            html, body {
+                height: 100%;
+                width: 100%;
+            }
+            .pink-strip {
+                background-color: #e8b3b3ff;
+                color: #fdf7f7ff !important;
+                text-align: center;
+                font-size: 40px;
+                font-weight: bold;
+                font-family: 'Raleway', sans-serif;
+            }
+
+            .main-title {
+                font-size: 60px;
+                text-align: center;
+                color: #303030ff !important;
+                font-family: 'Varela Round', sans-serif;
+            }
+
+            @media only screen and (min-width: 900px) {
+                .main-title {
+                    font-size: 90px;
+                }
+            }
+
+            .sub-title {
+                font-size: 25px;
+                text-align: center;
+                color: #303030ff !important;
+                font-family: 'Raleway', sans-serif;
+            }
+
+            .styled-table {
+                border-collapse: collapse;
+                margin: 25px 0;
+                font-size: 0.9em;
+                font-family: sans-serif;
+                width: 100%;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            }
+
+            .styled-table thead tr {
+                background-color: #e28d8dff;
+                color: #ffffff;
+                text-align: left;
+            }
+
+            .styled-table th, .styled-table td {
+                padding: 12px 15px;
+                border-right: 1px solid #ddd;
+            }
+
+            .styled-table tbody tr {
+                border-bottom: 1px solid #dddddd;
+            }
+
+            .styled-table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .styled-table tbody {
+                border-bottom: 2px solid #e28d8dff;
+            }
+
+            .styled-table tbody tr.active-row {
+                font-weight: bold;
+                color: #e28d8dff;
+            }
+
+            .experience-text {
+                font-size: 20px;
+                color: #161616;
+            }
+
+            .transparent-bg {
+                background-color: rgba(0, 0, 0, 0) !important; 
+            }
+
+            .nav-link {
+                color: #161616
+            }
+
+            #demo {
+                height:100%;
+                position:relative;
+                overflow:hidden;
+            }
+
+            .green{
+                background-color:#6fb936;
+            }
+
+            .thumb{
+                margin-bottom: 30px;
+            }
+            
+            .page-top{
+                margin-top:85px;
+            }
+
+            img.zoom {
+                width: 100%;
+                height: 200px;
+                border-radius:5px;
+                object-fit:cover;
+                -webkit-transition: all .3s ease-in-out;
+                -moz-transition: all .3s ease-in-out;
+                -o-transition: all .3s ease-in-out;
+                -ms-transition: all .3s ease-in-out;
+            }
+                    
+            .transition {
+                -webkit-transform: scale(1.2); 
+                -moz-transform: scale(1.2);
+                -o-transform: scale(1.2);
+                transform: scale(1.2);
+            }
+            .modal-header {
+            
+                border-bottom: none;
+            }
+            .modal-title {
+                color:#000;
+            }   
+
+            .activity-img {
+                width: 100%;
+            }
+
+            .dot {
+                height: 10px;
+                width: 10px;
+                background-color: #e28d8dff;
+                border-radius: 50%;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar" id="navbar-example" style="position: absolute; top: 0; height: 30px; width: 100%;">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="logo.png" width="50" alt="">
+                  </a>
+                <a class="btn btn-rounded rounded-pill btn-outline-danger" target="_blank" href="https://forms.gle/DMXUCqjwURDFuGCf6">
+                    APPLY NOW
+                </a>
+            </div>
+        </nav>
+        <div class="d-flex pt-3" style="background-color: #fdf7f7ff; min-height: 100%; background-image: url('bg_graphic.png'); background-size: cover; background-repeat: no-repeat;">
+            <div class="container" style="padding-top: 120px;">
+                <div class="row">
+                    <div style="max-width: 600px;" class="col-md-7 col-12 d-flex justify-content-center flex-column">
+                        <h1 class="display-4 pink-strip p-2">IIITD WELCOMES YOU TO</h1>
+                        <h3 class="main-title">SUMMER</h3>
+                        <h3 class="main-title">CAMP '21</h3>
+                        <h1 class="display-4 pink-strip p-2">PLAY . STUDY . LEARN</h1>
+                        <p class="sub-title">17th May - 18th June</p>
+                    </div>
+                    <div class="col-md-5 col-12 d-flex justify-content-center">
+                        <img src="./vector.png" style="max-width: 100%; height: auto;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fluid-container">
+            <nav class="navbar sticky-top navbar-light bg-light navbar-expand-lg" id="navbar-example">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="logo.png" width="50" alt="">
+                      </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon">
+                      </span>
+                    </button>
+                    <div class="collapse navbar-collapse ml-auto" id="navbarNav">
+                      <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#supp">Schedule</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#experiences">Experiences</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#news">Media Coverage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#noti">Contact Us</a>
+                        </li>
+                      </ul>
+                      <a class="btn btn-outline-danger" target="_blank" href="https://forms.gle/DMXUCqjwURDFuGCf6">
+                        APPLY NOW
+                    </a>
+                    </div>
+                    
+                </div>
+                <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            </nav>
+            <div class="section my-5" id="about">
+                <div class="container">
+                    <h2 class="display-5 mb-4"><span class="underline--magical">About The Program</span></h2>
+                    <div class="row m-0 p-0" style="position: relative;">
+                        <div class="col-12 col-md-6 pr-4 p-0" style="text-align: justify; position: sticky;">Summer Camp is an initiative by the students of IIIT-Delhi for the students of Government Schools located nearby IIIT-Delhi. The goal of the summer camp is to focus on building school students’ confidence and aspirations, developing basic skills like communication, problem-solving, and computer skills. It's a yearly activity that the institute do for the students of Government Schools located in the adjacent areas. Other than learning the academics the students are also engaged in fun activities like Theatre, Dance, Music, Arts, and Craft. There is also a special slot for Career Counselling, where students are told about various career options and are mentored by people having knowledge of various fields so that they can choose what interests them the most. Students are also offered snacks and refreshing drinks in the lunchtime. The lunchtime of Summer Camp helps students learn the etiquettes of eating; they use IIIT-Delhi Mess and are taught about how to keep the place clean, to keep their plates at the appropriate place after eating, to finish their food, etc. The camp is conducted over a span of 5 weeks, during May and June. This is the fourth edition of Summer Camp to be conducted from 13th May 2019 to 14th June 2019 with an expected intake of 180 students from around 5 schools situated nearby IIIT-D.</div>
+                        <div class="col-12 col-md-6 px-2 d-flex justify-content-center flex-column">
+                            <div class="row d-flex flex-column p-2 align-items-center">
+                                <iframe src="https://www.youtube.com/embed/M0Rdpkgllbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; min-height: 300px"></iframe>
+                                <h4>Summer Camp 2017</h4>
+                            </div>
+                            <div class="row d-flex flex-column p-2 align-items-center">
+                                <iframe src="https://www.youtube.com/embed/InGI0tKoJag" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; min-height: 300px"></iframe>
+                                <h4>Summer Camp 2019</h4>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section my-5">
+                <div class="container" id="toc">
+                    <h2 class="display-5 mb-4"><span class="underline--magical">Activities</span></h2>
+                    <div class="row m-0 p-0 justify-content-center">
+                        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center flex-column align-items-center my-2">
+                            <img class=" z-depth-2 activity-img" alt="100x100" src="Assets/science.png" data-holder-rendered="true">
+                            <h5 class="py-3">General Science</h5>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3 col-lg-3 d-flex justify-content-center flex-column align-items-center my-2">
+                            <img class=" z-depth-2 activity-img" alt="100x100" src="Assets/logical_aptitude-01.png" data-holder-rendered="true">
+                            <h5 class="py-3">Logical & Aptitude</h5>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center flex-column align-items-center my-2">
+                            <img class=" z-depth-2 activity-img" alt="100x100" src="Assets/CS.png" data-holder-rendered="true">
+                            <h5 class="py-3">Communication Skills</h5>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center flex-column align-items-center my-2">
+                            <img class=" z-depth-2 activity-img" alt="100x100" src="Assets/entrue.png" data-holder-rendered="true">
+                            <h5 class="py-3">Entrepreneurship</h5>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center flex-column align-items-center my-2">
+                            <img class=" z-depth-2 activity-img" alt="100x100" src="Assets/PD.png" data-holder-rendered="true">
+                            <h5 class="py-3">Personality Development</h5>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center flex-column align-items-center my-2">
+                            <img class=" z-depth-2 activity-img" alt="100x100" src="Assets/origami.png" data-holder-rendered="true">
+                            <h5 class="py-3">Art / Origami</h5>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center flex-column align-items-center my-2">
+                            <img class=" z-depth-2 activity-img" alt="100x100" src="Assets/chess.png" data-holder-rendered="true">
+                            <h5 class="py-3">Chess</h5>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center flex-column align-items-center my-2">
+                            <img class=" z-depth-2 activity-img" alt="100x100" src="Assets/astronomy.png" data-holder-rendered="true">
+                            <h5 class="py-3">Astronomy</h5>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center flex-column align-items-center my-2">
+                            <img class=" z-depth-2 activity-img" alt="100x100" src="Assets/storytelling.png" data-holder-rendered="true">
+                            <h5 class="py-3">Story Telling</h5>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3 d-flex justify-content-center flex-column align-items-center my-2">
+                            <img class=" z-depth-2 activity-img" alt="100x100" src="Assets/ted.png" data-holder-rendered="true">
+                            <h5 class="py-3">TED Talk</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section my-5" id="supp">
+                <div class="container" >
+                    <h2 class="display-5 mb-4"><span class="underline--magical">Schedule</span></h2>
+                    <div class="fluid-container">
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>9AM - 9:30AM</th>
+                                    <th>Session 1 (9:30AM - 11:30AM)</th>
+                                    <th>11:30AM - 12:00PM</th>
+                                    <th>Session 2 (12:00PM - 01:00PM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Monday</td>
+                                    <td rowspan="5">Morning Sessions</td>
+                                    <td>Problem Solving and Maths</td>
+                                    <td rowspan="5">Lunch</td>
+                                    <td>Activity1</td>
+                                </tr>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td>Hands on Science</td>
+                                    <td>Activity2</td>
+                                </tr>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td>PD</td>
+                                    <td>Activity3</td>
+                                </tr>
+                                <tr>
+                                    <td>Thursday</td>
+                                    <td>CS</td>
+                                    <td>Activity4</td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td>ENT</td>
+                                    <td>Activity5</td>
+                                </tr>
+                                <!-- <tr class="active-row">
+                                    <td>Melissa</td>
+                                    <td>5150</td>
+                                </tr> -->
+                                <!-- and so on... -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="section my-5">
+                <div class="container" id="bib">
+                    <h2 class="display-5 mb-4"><span class="underline--magical">Gallery</span></h2>
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a href="images/img1.JPG" class="fancybox" rel="ligthbox">
+                                <img  src="images/img1.JPG" class="zoom img-fluid "  alt="">
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a href="images/img2.JPG"  class="fancybox" rel="ligthbox">
+                                <img  src="images/img2.JPG" class="zoom img-fluid"  alt="">
+                            </a>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a href="images/img3.JPG" class="fancybox" rel="ligthbox">
+                                <img  src="images/img3.JPG" class="zoom img-fluid "  alt="">
+                            </a>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a href="images/img4.JPG" class="fancybox" rel="ligthbox">
+                                <img  src="images/img4.JPG" class="zoom img-fluid"  alt="">
+                            </a>
+                        </div>
+                        
+                         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a href='images/img5.JPG' class="fancybox" rel="ligthbox">
+                                <img  src="images/img5.JPG" class="zoom img-fluid"  alt="">
+                            </a>
+                        </div>
+                        
+                         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a href="images/img6.JPG" class="fancybox" rel="ligthbox">
+                                <img  src="images/img6.JPG" class="zoom img-fluid "  alt="">
+                            </a>
+                        </div>
+                        
+                         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a href="images/img7.JPG" class="fancybox" rel="ligthbox">
+                                <img  src="images/img7.JPG" class="zoom img-fluid "  alt="">
+                            </a>
+                        </div>
+                        
+                         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a href="images/img8.JPG" class="fancybox" rel="ligthbox">
+                                <img  src="images/img8.JPG" class="zoom img-fluid "  alt="">
+                            </a>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a href='images/img9.JPG' class="fancybox" rel="ligthbox">
+                                <img  src="images/img9.JPG" class="zoom img-fluid"  alt="">
+                            </a>
+                        </div>
+                        
+                         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a href="images/img10.JPG" class="fancybox" rel="ligthbox">
+                                <img  src="images/img10.JPG" class="zoom img-fluid "  alt="">
+                            </a>
+                        </div>
+                        
+                         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a href="images/img11.JPG" class="fancybox" rel="ligthbox">
+                                <img  src="images/img11.JPG" class="zoom img-fluid "  alt="">
+                            </a>
+                        </div>
+                        
+                         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a href="images/img12.JPG" class="fancybox" rel="ligthbox">
+                                <img  src="images/img12.JPG" class="zoom img-fluid "  alt="">
+                            </a>
+                        </div>
+                   </div>
+                </div>
+            </div>
+            <!-- <div class="section my-5" id="experiences">
+                <div class="" >
+                    <h2 class="container display-5 mb-4"><span class="underline--magical">Message From Schools</span></h2>
+                    
+                </div>
+            </div> -->
+            <div class="section my-5" id="experiences">
+                <div class="" >
+                    <h2 class="container display-5 mb-4"><span class="underline--magical">Student Experiences</span></h2>
+                    <div class="owl-carousel owl-theme">
+                        <div class="fluid-container pt-4 bg-light">
+                            <div class="row m-0 px-3 pt-2 pb-4">
+                                <div class="col-12 d-flex justify-content-center align-items-center flex-column" style="height: 200px;">
+                                    <span class="material-icons">format_quote</span>
+                                    <p class="experience-text">Discipline and punctuality: we should always respect time and be disciplined.</p>
+                                    <div class="round-holder">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fluid-container bg-light pt-4 ">
+                            <div class="row m-0 px-3 pt-2 pb-4">
+                                <div class="col-12 d-flex justify-content-center align-items-center flex-column" style="height: 200px;">
+                                    <span class="material-icons">format_quote</span>
+                                    <p class="experience-text">We should be focused towards our goals; people will try to distract us, but we should remain selfish towards our goal.</p>
+                                    <div class="round-holder">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fluid-container bg-light pt-4 ">
+                            <div class="row m-0 px-3 pt-2 pb-4">
+                                <div class="col-12 d-flex justify-content-center align-items-center flex-column" style="height: 200px;">
+                                    <span class="material-icons">format_quote</span>
+                                    <p class="experience-text">We should not be disheartened by our failures or mistake, we should take pride in that and get motivated by them.</p>
+                                    <div class="round-holder">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fluid-container bg-light pt-4 ">
+                            <div class="row m-0 px-3 pt-2 pb-4">
+                                <div class="col-12 d-flex justify-content-center align-items-center flex-column" style="height: 200px;">
+                                    <span class="material-icons">format_quote</span>
+                                    <p class="experience-text">We used to be afraid of going on stage,but now we are confident to go on stage and perform.</p>
+                                    <div class="round-holder">
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                        <span class="dot"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section my-5" id="news">
+                <div class="container">
+                    <h2 class="display-5 mb-4"><span class="underline--magical">Summer Camp in Media</span></h2>
+                    <div class="card-columns">
+                        <div class="card">
+                          <img class="card-img-top" src="amarujala.jpg" alt="Card image cap">
+                          <!-- <div class="card-body">
+                            <h5 class="card-title">Amarujala</h5>
+                            <p class="card-text">20th May, 2019</p>
+                          </div> -->
+                          <blockquote class="blockquote mb-0 card-body">
+                            <footer class="blockquote-footer">
+                              <small class="text-muted">
+                                Amarujala, 20th May 2019
+                              </small>
+                            </footer>
+                          </blockquote>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top" src="toi.jpg" alt="Card image cap">
+                            <!-- <div class="card-body">
+                              <h5 class="card-title">Amarujala</h5>
+                              <p class="card-text">20th May, 2019</p>
+                            </div> -->
+                            <blockquote class="blockquote mb-0 card-body">
+                              <footer class="blockquote-footer">
+                                <small class="text-muted">
+                                  Times of India, 20th May 2019
+                                </small>
+                              </footer>
+                            </blockquote>
+                          </div>
+                        <div class="card">
+                            <img class="card-img-top" src="edutimes.png" alt="Card image cap">
+                            <!-- <div class="card-body">
+                              <h5 class="card-title">Amarujala</h5>
+                              <p class="card-text">20th May, 2019</p>
+                            </div> -->
+                            <blockquote class="blockquote mb-0 card-body">
+                              <footer class="blockquote-footer">
+                                <small class="text-muted">
+                                  Education Times, 17th May 2019
+                                </small>
+                              </footer>
+                            </blockquote>
+                          </div>
+                          <div class="card">
+                            <img class="card-img-top" src="brainfeed.png" alt="Card image cap">
+                            <!-- <div class="card-body">
+                              <h5 class="card-title">Amarujala</h5>
+                              <p class="card-text">20th May, 2019</p>
+                            </div> -->
+                            <blockquote class="blockquote mb-0 card-body">
+                              <footer class="blockquote-footer">
+                                <small class="text-muted">
+                                  Brainfeed Magazine, 18th May 2019
+                                </small>
+                              </footer>
+                            </blockquote>
+                          </div>
+                          <div class="card">
+                            <img class="card-img-top" src="city.png" alt="Card image cap">
+                            <!-- <div class="card-body">
+                              <h5 class="card-title">Amarujala</h5>
+                              <p class="card-text">20th May, 2019</p>
+                            </div> -->
+                            <blockquote class="blockquote mb-0 card-body">
+                              <footer class="blockquote-footer">
+                                <small class="text-muted">
+                                  City Air News, 18th May 2019
+                                </small>
+                              </footer>
+                            </blockquote>
+                          </div>
+                      </div>
+                </div>
+            </div>
+            <div class="section mt-5 bg-dark pt-4" style="padding-bottom: 20px;" id="noti">
+                <div class="container">
+                    <!-- <h2 class="display-5 mb-4 text-white mt-2 text-center"></h2> -->
+                    <h4 class="mb-4 text-white mt-2 text-center">Manager (Academics), IIITD</h4>
+                    <div class="d-flex justify-content-center align-items-center row">
+                        
+                        <div class="col-5 col-md-4 text-white border rounded p-3 m-2">
+                            <div class="row">
+                                <div class="col-2"><span class="material-icons">account_circle</span></div>
+                                <div class="col-10">Sheetu Ahuja</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2"><span class="material-icons">email</span></div>
+                                <div class="col-10">sheetu@iiitd.ac.in</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="mb-4 text-white mt-2 text-center">Coordinators</h4>
+                    <div class="d-flex justify-content-center align-items-center row">
+                        <div class="col-4 col-md-3 text-white border rounded p-3 m-2">
+                            <div class="row">
+                                <div class="col-2"><span class="material-icons">account_circle</span></div>
+                                <div class="col-10">Harsh Sonkar</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2"><span class="material-icons">email</span></div>
+                                <div class="col-10">mohit18343@iiitd.ac.in</div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-2"><span class="material-icons">phone</span></div>
+                                <div class="col-10">+91 8059712000</div>
+                            </div> -->
+                        </div>
+                        <div class="col-4 col-md-3 text-white border rounded p-3 m-2">
+                            <div class="row">
+                                <div class="col-2"><span class="material-icons">account_circle</span></div>
+                                <div class="col-10">Mohit Dhattarwal</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2"><span class="material-icons">email</span></div>
+                                <div class="col-10">mohit18343@iiitd.ac.in</div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-2"><span class="material-icons">phone</span></div>
+                                <div class="col-10">+91 8059712000</div>
+                            </div> -->
+                        </div>
+                        <div class="col-4 col-md-3 text-white border rounded p-3 m-2">
+                            <div class="row">
+                                <div class="col-2"><span class="material-icons">account_circle</span></div>
+                                <div class="col-10">Pakhi Mangoli</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2"><span class="material-icons">email</span></div>
+                                <div class="col-10">mohit18343@iiitd.ac.in</div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-2"><span class="material-icons">phone</span></div>
+                                <div class="col-10">+91 8059712000</div>
+                            </div> -->
+                        </div>
+                        <div class="col-4 col-md-3 text-white border rounded p-3 m-2">
+                            <div class="row">
+                                <div class="col-2"><span class="material-icons">account_circle</span></div>
+                                <div class="col-10">Sanskar Sachdeva</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2"><span class="material-icons">email</span></div>
+                                <div class="col-10">mohit18343@iiitd.ac.in</div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-2"><span class="material-icons">phone</span></div>
+                                <div class="col-10">+91 8059712000</div>
+                            </div> -->
+                        </div>
+                        <div class="col-4 col-md-3 text-white border rounded p-3 m-2">
+                            <div class="row">
+                                <div class="col-2"><span class="material-icons">account_circle</span></div>
+                                <div class="col-10">Paritosh Shukla</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2"><span class="material-icons">email</span></div>
+                                <div class="col-10">mohit18343@iiitd.ac.in</div>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-2"><span class="material-icons">phone</span></div>
+                                <div class="col-10">+91 8059712000</div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <h4 class="mb-2 text-white mt-4 text-center">Contact Us</h4>
+                    <h5 class="text-center text-white">8059712000, 9599667431</h5>
+                    <!-- <div class="row d-flex justify-content-center mt-3">
+                        <a class="btn btn-rounded rounded-pill btn-outline-danger" target="_blank" href="https://forms.gle/DMXUCqjwURDFuGCf6">
+                            APPLY NOW
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+            <div class="fluid-container p-3 bg-dark d-flex justify-content-end">
+                <a href="https://iiitd.ac.in"><img src="iiitd_identity.png" height=60></a>
+            </div>
+            
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous"></script>
+        <script>
+            let table_of_contents = [
+                {
+                    name: "Introduction",
+                    topics: [
+                        {
+                            name: "What is social network analysis?",
+                            subtopics: [],
+                        },
+                        {
+                            name: "Why do We Study Social Networks?",
+                            subtopics: [],
+                        },
+                        {
+                            name: "Applications of Social Network Analysis",
+                            subtopics: [
+                                "Healthcare",
+                                "Social Media & E-Commerce",
+                                "Web & Cyberspace",
+                                "Police & Military",
+                                "Scientific Research & Academic Collaboration",
+                                "New subtpic",
+                            ],
+                        },
+                        {
+                            name: "Preliminaries",
+                            subtopics: [
+                                "Defining a Network",
+                                "Types of Networks",
+                                "Link-centric View",
+                                "Combining Node-centric and Link-centric View",
+                                "Local View",
+                                "Temporal View",
+                                "Generalized View",
+                                "Popular Real-world Networks",
+                            ]
+                        }, {
+                            name: "Three Levels of Social Network Analysis",
+                            subtopics: [],
+                        }, {
+                            name: "Historical Development",
+                            subtopics: [
+                                "From Sociology to Sociometry",
+                                "Applications of Graph Theory to Social Structures",
+                                "Social Network as Complex Network",
+                                "Role of Computers in Influencing Social Network Analysis",
+                            ],
+                        }, {
+                            name: 'Graph Visualization Tools',
+                            subtopics: [],
+                        },
+                        {
+                            name: "Summary of the Chapter",
+                            subtopics: [],
+                        },
+                        {
+                            name: "Bibliography",
+                            subtopics: [],
+                        }
+                    ]
+                }, 
+                {
+                    name: "Network Measures",
+                    topics: [
+                        {
+                            name: "Network Basics",
+                            subtopics: [
+                                "Degree and Degree Distributions",
+                                "Paths",
+                                "Clustering Coefficient",
+                                "Connected Components"
+                            ],
+                        },
+                        {
+                            name: "Node Centrality",
+                            subtopics: [],
+                        },
+                        {
+                            name: "Assortativity",
+                            subtopics: [],
+                        },
+                        {
+                            name: "Transitivity and Reciprocity",
+                            subtopics: [],
+                        },
+                        {
+                            name: "Similarity",
+                            subtopics: [],
+                        },
+                        {
+                            name: "Degeneracy",
+                            subtopics: [],
+                        },
+                        {
+                            name: "Summary of the Chapter",
+                            subtopics: [],
+                        },
+                        {
+                            name: "Bibliography",
+                            subtopics: [],
+                        }
+                    ]
+                },
+                {
+                    name: "Network Growth Models",
+                    topics: [
+                        {
+                            name: "Properties of Real-world Networks",
+                            subtopics: [
+                                "High Average Local Clustering Coefficient",
+                                "Small-world Property",
+                                "Scale-free Property"
+                            ],
+                        },
+                        {
+                            name: "Random Network Model",
+                            subtopics: [
+                                "Degree Distribution of Random Network",
+                                "Binomial to Poisson Distribution",
+                                "Evolution of a Random Network",
+                                "Average Path Length",
+                                "Clustering Coefficient",
+                                "Random Network vs. Real-world Network"
+                            ],
+                        },
+                        {
+                            name: "Ring Lattice Network Model",
+                            subtopics: [],
+                        },
+                        {
+                            name: "Watts-Strogatz Model",
+                            subtopics: ["Network Formation"],
+                        },
+                        {
+                            name: "Preferential Attachment Model",
+                            subtopics: ["Network Formation", "Degree Dynamics", "Limitations of BA Model"],
+                        },
+                        {
+                            name: "Price's Model",
+                            subtopics: [],
+                        },
+                        {
+                            name: "Local-world NNetwork Growth Model",
+                            subtopics: ["Network Formation"],
+                        },
+                        {
+                            name: "Network Model with Accelerating Growth",
+                            subtopics: [],
+                        }, 
+                        {
+                            name: "Aging in Preferential Attachment",
+                            subtopics: [
+                                "Minimal Time-dependent Model",
+                                "Gradually-vanishing "
+                            ],
+                        }
+                    ]
+                }
+            ]
+
+            function addCollapseButton(id, prefix, text, pointer) {
+                let topic_button = document.createElement("button")
+                topic_button.classList.add("btn", "btn-block", "text-left", "p-2")
+                topic_button.setAttribute("type", "button")
+                topic_button.setAttribute("data-toggle", "collapse")
+                topic_button.setAttribute("data-target", `#toc_${id}_${prefix}`)
+                topic_button.setAttribute("aria-expanded", "true")
+                topic_button.setAttribute("aria-controls", `toc_${id}_${prefix}`)
+                topic_button.innerText = `${pointer} ${text}`
+                return topic_button
+            }
+                
+            function createTableOfContentsAccordianMain() {
+                let toc_holder = document.getElementById("table_of_contents")
+                for (let i = 0; i < table_of_contents.length; i++) {
+                    let chapter_id = i+1
+                    let topic_div = document.createElement('div')
+                    topic_div.id = `toc_${chapter_id}`
+                    topic_div.classList.add("col-12", "m-0", "p-0")
+                    let topic_button = addCollapseButton(chapter_id, "main", table_of_contents[i]["name"], `${chapter_id}`)
+                    topic_div.appendChild(topic_button)
+                    topic_div.appendChild(createTableOfContentsAccordianTopic(table_of_contents[i]['topics'], `toc_${chapter_id}_main`, chapter_id))
+                    toc_holder.appendChild(topic_div)
+                }
+
+            }
+
+            function createTableOfContentsAccordianTopic(data, id, chapter) {
+                let topic_holder = document.createElement('div')
+                topic_holder.classList.add("collapse", "col-12", "m-0", "p-2", "border")
+                topic_holder.setAttribute("aria-labelledby", `toc_${chapter}`)
+                topic_holder.setAttribute("data-parent","#table_of_contents")
+                topic_holder.id = id
+                for (let i = 0; i < data.length; i++) {
+                    let topic_id = `${chapter}_${i+1}`
+                    let topic_div = document.createElement('div')
+                    topic_div.id = `toc_${topic_id}`
+                    topic_div.classList.add("col-12", "m-0", "p-0")
+                    let topic_button = addCollapseButton(topic_id, "sub", data[i]["name"], `${chapter}.${i+1}`)
+                    topic_div.appendChild(topic_button)
+                    let subtopic_holder = document.createElement('div')
+                    subtopic_holder.classList.add("collapse", "col-12", "m-0", "p-2", "border")
+                    subtopic_holder.setAttribute("aria-labelledby", `toc_${topic_id}_sub`)
+                    subtopic_holder.setAttribute("data-parent",`#toc_${chapter}_main`)
+                    subtopic_holder.id = `toc_${topic_id}_sub`
+                    for (let j = 0; j < data[i]['subtopics'].length; j++) {
+                        subtopic_holder.innerHTML += `<p class="m-1 p-1">${chapter}.${i+1}.${j+1} ${data[i]["subtopics"][j]}</p>`
+                    }
+                    if (data[i]['subtopics'].length != 0) topic_div.appendChild(subtopic_holder)
+                    topic_holder.appendChild(topic_div)
+                }
+                return topic_holder
+            }
+            $(document).ready(function(){
+                $('.owl-carousel').owlCarousel({
+                    loop:true,
+                    margin:10,
+                    nav:true,
+                    items: 1,
+                })
+                // createTableOfContentsAccordianMain()
+                $(window).scroll(function() {
+
+                    // var height = $('.first-container').height();
+                    var scrollTop = $(window).scrollTop();
+
+                    if (scrollTop >= 40) {
+                        $('#navbar-example').removeClass('transparent-bg');
+                    } else {
+                        $('#navbar-example').addClass('transparent-bg');
+                    }
+
+                });
+                $(".fancybox").fancybox({
+                    openEffect: "none",
+                    closeEffect: "none"
+                });
+                
+                $(".zoom").hover(function(){
+                    
+                    $(this).addClass('transition');
+                }, function(){
+                    
+                    $(this).removeClass('transition');
+                });
+            });
+        </script>
+    </body>
+</html>
